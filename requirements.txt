@@ -25,9 +25,9 @@ fastapi-users[sqlalchemy]==10.0.4
 fastapi==0.78.0
 flake8==4.0.1
 freezegun==1.2.1
-greenlet==1.1.2
+greenlet==3.0.3
 h11==0.13.0
-httptools==0.4.0
+httptools==0.6.1
 idna==3.3
 iniconfig==1.1.1
 makefun==1.13.1
@@ -41,7 +41,7 @@ pluggy==1.0.0
 py==1.11.0
 pycodestyle==2.8.0
 pycparser==2.21
-pydantic==1.9.1
+pydantic==1.10.0a1
 pyflakes==2.4.0
 pyjwt[crypto]==2.3.0
 pyparsing==3.0.9
