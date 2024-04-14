@@ -4,10 +4,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.crud.charity_project import charity_project_crud
 from app.models.charity_project import CharityProject
 from app.schemas.charity_project import CharityProjectUpdate
-from app.core.constant import MIN_AMOUNT
+from app.core.constants import MIN_AMOUNT
 
 
-async def check_charity_project_exists(
+async def get_charity_project(
     charity_project_id: int,
     session: AsyncSession,
 ) -> CharityProject:
@@ -56,7 +56,7 @@ async def check_invested_project_exists(
     charity_project = await charity_project_crud.get(
         charity_project_id, session
     )
-    charity_project = await check_charity_project_exists(
+    charity_project = await get_charity_project(
         charity_project_id, session
     )
     if charity_project.invested_amount > MIN_AMOUNT:
@@ -79,19 +79,12 @@ async def check_charity_project_full_amount(
 
 
 async def check_charity_project_delete(
-    charity_project_id: int,
-    session: AsyncSession,
-) -> CharityProject:
+        charity_project: CharityProject.id,
+) -> None:
     '''Проверка на присутствие/отсутствие инвестиций в проекте.'''
-    charity_project = await charity_project_crud.get(
-        charity_project_id, session
-    )
-    charity_project = await check_charity_project_exists(
-        charity_project_id, session
-    )
+
     if charity_project.invested_amount > MIN_AMOUNT:
         raise HTTPException(
             status_code=400,
             detail='Проверка на присутствие/отсутствие инвестиций в проекте',
         )
-    return charity_project

@@ -4,7 +4,7 @@ from sqlalchemy import (Boolean, CheckConstraint, Column, DateTime, ForeignKey,
                         Integer, Text)
 
 from app.core.db import Base
-from app.core.constant import MIN_AMOUNT
+from app.core.constants import MIN_AMOUNT
 
 
 class Donation(Base):

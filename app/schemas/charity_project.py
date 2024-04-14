@@ -3,7 +3,7 @@ from typing import Optional
 
 from pydantic import BaseModel, Extra, Field, PositiveInt
 
-from app.core.constant import MIX_PROJECT_NAME_LEN, MAX_PROJECT_NAME_LEN
+from app.core.constants import MIX_PROJECT_NAME_LEN, MAX_PROJECT_NAME_LEN
 
 
 class CharityProjectBase(BaseModel):

@@ -5,5 +5,4 @@ from app.core.config import settings
 
 app = FastAPI(title=settings.app_title)
 
-# Подключаем главный роутер.
 app.include_router(main_router)

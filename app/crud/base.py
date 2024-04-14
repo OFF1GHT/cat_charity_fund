@@ -1,4 +1,3 @@
-# app/crud/base.py
 from typing import Optional
 
 from fastapi.encoders import jsonable_encoder
@@ -32,7 +31,6 @@ class CRUDBase:
     ):
         obj_in_data = obj_in.dict()
         if user is not None:
-            # ...то дополнить словарь для создания модели.
             obj_in_data['user_id'] = user.id
         db_obj = self.model(**obj_in_data)
         session.add(db_obj)

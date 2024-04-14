@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import CharityProject, Donation
 from app.crud.base import CRUDBase
-from app.core.constant import MIN_AMOUNT
+from app.core.constants import MIN_AMOUNT
 
 
 async def investing_process(entity, session: AsyncSession):

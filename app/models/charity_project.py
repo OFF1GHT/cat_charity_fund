@@ -4,7 +4,7 @@ from sqlalchemy import (Boolean, CheckConstraint, Column, DateTime, Integer,
                         String, Text)
 
 from app.core.db import Base
-from app.core.constant import MIN_AMOUNT, MAX_PROJECT_NAME_LEN
+from app.core.constants import MIN_AMOUNT, MAX_PROJECT_NAME_LEN
 
 
 class CharityProject(Base):
