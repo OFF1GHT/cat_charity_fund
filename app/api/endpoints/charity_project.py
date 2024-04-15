@@ -1,11 +1,6 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from fastapi import HTTPException
-from app.api.validator import (
-    check_charity_project_delete,
-    get_charity_project,
-)
 from app.core.db import get_async_session
 from app.core.user import current_superuser
 from app.crud.charity_project import charity_project_crud
@@ -77,11 +72,8 @@ async def remove_charity_project(
         session: AsyncSession = Depends(get_async_session),
 ):
     """Удаление благотворительного проекта. Доступно для суперюзеров."""
-    charity_project = await get_charity_project(
-        project_id, session
-    )
-    await check_charity_project_delete(charity_project)
-    charity_project = await charity_project_crud.remove(
-        charity_project, session
+    charity_project_service = CharityProjectService(session)
+    charity_project = await charity_project_service.charity_project_remove(
+        project_id
     )
     return charity_project
